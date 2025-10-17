@@ -1,30 +1,35 @@
 ---
 title: Prompt words for Repository-Level Code Generation Tasks
-tags: Repo,Issue,Code Generation
+tags: Repo Issue Code_Generation
 ---
 
-# Prompt Structure for Repository-Level Code Generation Tasks
+# Code Generation Task Prompt Structure and Example
+
+## Part 1: Prompt Structure Overview
 
 Prompts for repository-level code generation tasks can be divided into three main sections:
 
-## 1. Problem Description
+### 1. Problem Description
 This section describes the task that the agent needs to accomplish within the codebase. Its structure is similar to a **GitHub Issue**.
 
-## 2. Requirement Analysis
+### 2. Requirement Analysis
 This section contains a series of **manually written requirements**. It typically specifies the behaviors that the implemented solution should exhibit, which will be **directly verified during testing**.
 
-## 3. Interface Specification (Optional)
+### 3. Interface Specification (Optional)
 This is an optional field, used only when the task solution requires modifying or creating new public interfaces. It includes interface information for all modified or created classes and functions, including:
 - Their signatures
 - Their file paths
 
-### Importance of Interface Specification
+#### Importance of Interface Specification
 The Interface Specification plays a crucial role in **reducing false positives in unit test validation**, particularly in code changes related to **feature additions**. When adding new functionality, relevant unit tests are written against the specific set of interfaces exposed by the newly added classes and functions.
 
 ---
 
-*Below is a feature request for Open Library as an example:*
+## Part 2: Concrete Example
 
+Below is a complete prompt example following the above structure, presented in its raw markdown format within a code block:
+
+```text
 # Feature Request: Add Google Books as Metadata Source to BookWorm
 
 ## Problem / Opportunity
@@ -131,3 +136,4 @@ Parse and stage these minimum fields from Google Books responses:
 
 **Method:** `run(self)`
 - **Description:** Batches and processes Amazon API lookups
+```
